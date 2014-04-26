@@ -1,24 +1,34 @@
-import basic3d.basicrunner, pygame, math
+import basic3d.basicrunner, basic3d.colors, pygame, math
 from basic3d.shapes import *
 
 class BouncingCube(Cube):
     def __init__(self, size):
         super(BouncingCube, self).__init__(size)
+        # The delta y of the cube
         self.dy = 1
+        # The y range the cube can move in
         self.range = 5
+        # Randomize the colors of the faces
+        for face in self.faces:
+            face.color = basic3d.colors.random_known_color()
 
     def update(self, dt):
+        # If the cube has gone out of
+        # range, invert the direction
         half_range = self.range/2
         if self.y < -half_range or self.y > half_range:
-            self.invert_bounce()
+            self.invert_direction()
+        # Move
         self.y += dt * self.dy
+        # Rotate
         self.rotate(0, dt * math.pi/2, 0)
 
     def handle_event(self, event):
+        # On mouse press, invert the direction
         if event.type == pygame.MOUSEBUTTONDOWN:
-            self.invert_bounce()
+            self.invert_direction()
 
-    def invert_bounce(self):
+    def invert_direction(self):
         self.dy *= -1
 
 if __name__ == '__main__':
@@ -34,7 +44,7 @@ if __name__ == '__main__':
     right_cube.x += offset
 
     # Make some bounce in different directions
-    middle_cube.invert_bounce()
+    middle_cube.invert_direction()
 
     basic3d.basicrunner.main_loop(
         300,
