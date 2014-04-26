@@ -1,3 +1,4 @@
+import basic3d.colors as colors
 from math import sin, cos
 
 #############################
@@ -31,6 +32,7 @@ class Vec3(object):
 class Face(object):
     def __init__(self, vertices):
         self.vertices = vertices
+        self.color = colors.black
 
 class Obj3D(object):
     def __init__(self, faces, x=0, y=0, z=8):

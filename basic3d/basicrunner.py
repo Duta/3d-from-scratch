@@ -41,7 +41,7 @@ def main_loop(w, h, title, obj3Ds, fps=60):
                     y = cy + sf*vy/vz
                     xys.append([x, y])
                 # Draw the face to the screen
-                pygame.draw.polygon(screen, colors.black, xys, 1)
+                pygame.draw.polygon(screen, face.color, xys, 1)
 
     # Main loop
     while 1:

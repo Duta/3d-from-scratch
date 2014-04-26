@@ -19,7 +19,7 @@ class Cuboid(Obj3D):
             Face([vertices[0], vertices[4], vertices[5], vertices[1]]),
             Face([vertices[1], vertices[5], vertices[6], vertices[2]]),
             Face([vertices[2], vertices[6], vertices[7], vertices[3]]),
-            Face([vertices[4], vertices[0], vertices[3], vertices[7]]),
+            Face([vertices[4], vertices[0], vertices[3], vertices[7]])
         ]
         super(Cuboid, self).__init__(faces)
         self.w = w
