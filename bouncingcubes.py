@@ -16,8 +16,10 @@ class BouncingCube(Cube):
         # If the cube has gone out of
         # range, invert the direction
         half_range = self.range/2
-        if self.y < -half_range or self.y > half_range:
-            self.invert_direction()
+        if self.y < -half_range:
+            self.dy = abs(self.dy)
+        if self.y > half_range:
+            self.dy = -abs(self.dy)
         # Move
         self.y += dt * self.dy
         # Rotate
