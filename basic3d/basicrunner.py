@@ -22,8 +22,11 @@ def main_loop(w, h, title, obj3Ds, fps=60):
                 xys = []
                 sf = min(cx, cy)
                 for vertex in vertices:
-                    x = cx + sf*(vertex.x + ox)/(vertex.z + oz)
-                    y = cy + sf*(vertex.y + oy)/(vertex.z + oz)
+                    vx = vertex.x + ox
+                    vy = vertex.y + oy
+                    vz = vertex.z + oz
+                    x = cx + sf*vx/vz
+                    y = cy + sf*vy/vz
                     xys.append([x, y])
                 pygame.draw.polygon(screen, colors.black, xys, 1)
 
