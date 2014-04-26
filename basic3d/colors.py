@@ -1,3 +1,5 @@
+import random
+
 black       =   0,   0,   0
 white       = 255, 255, 255
 
@@ -30,3 +32,38 @@ orange_red  = 255,  69,   0
 dark_orange = 255, 140,   0
 orange      = 255, 165,   0
 gold        = 255, 215,   0
+
+colors = [
+    black,
+    white,
+    blue,
+    lime,
+    red,
+    cyan,
+    yellow,
+    magenta,
+    gray,
+    silver,
+    maroon,
+    green,
+    navy,
+    teal,
+    olive,
+    purple,
+    brown,
+    dark_red,
+    dark_green,
+    dark_blue,
+    orange_red,
+    dark_orange,
+    orange,
+    gold
+]
+
+def random_color():
+    def random_rgb():
+        return random.randrange(256)
+    return random_rgb(), random_rgb(), random_rgb()
+
+def random_known_color():
+    return random.choice(colors)
