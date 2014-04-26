@@ -23,18 +23,18 @@ if __name__ == '__main__':
             self.dy *= -1
 
     # Create a few cubes
-    left_small_cube   = BouncingCube(2)
-    center_big_cube   = BouncingCube(4)
-    right_medium_cube = BouncingCube(3)
-    obj3Ds = [center_big_cube, left_small_cube, right_medium_cube]
+    left_cube   = BouncingCube(2)
+    middle_cube = BouncingCube(4)
+    right_cube  = BouncingCube(3)
+    obj3Ds = [middle_cube, left_cube, right_cube]
 
     # Position them
     offset = 4.5
-    left_small_cube.x   -= offset
-    right_medium_cube.x += offset
+    left_cube.x  -= offset
+    right_cube.x += offset
 
     # Make some bounce in different directions
-    center_big_cube.invert_bounce()
+    middle_cube.invert_bounce()
 
     basic3d.basicrunner.main_loop(
         300,
