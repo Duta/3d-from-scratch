@@ -1,4 +1,4 @@
-import sys, pygame
+import sys, pygame, color
 
 class Vec3(object):
     def __init__(self, x, y, z):
@@ -10,8 +10,8 @@ class Face(object):
     def __init__(self, vertices):
         self.vertices = vertices
 
-def render():
-    pass
+def render(screen):
+    screen.fill(color.white)
 
 def main_loop(w, h, title, update_func, event_handler, fps=60):
     # The window dimensions
@@ -37,7 +37,7 @@ def main_loop(w, h, title, update_func, event_handler, fps=60):
         update_func()
 
         # Redraw
-        render()
+        render(screen)
 
         # Flip the buffers
         pygame.display.flip()
