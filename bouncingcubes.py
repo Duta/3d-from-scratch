@@ -1,27 +1,27 @@
 import basic3d.basicrunner, pygame
 from basic3d.shapes import *
 
+class BouncingCube(Cube):
+    def __init__(self, size):
+        super(BouncingCube, self).__init__(size)
+        self.dy = 0.1
+        self.range = 5
+
+    def update(self):
+        half_range = self.range/2
+        if self.y < -half_range or self.y > half_range:
+            self.invert_bounce()
+        self.y += self.dy
+        self.rotate(0, 0.0035, 0)
+
+    def handle_event(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            self.invert_bounce()
+
+    def invert_bounce(self):
+        self.dy *= -1
+
 if __name__ == '__main__':
-    class BouncingCube(Cube):
-        def __init__(self, size):
-            super(BouncingCube, self).__init__(size)
-            self.dy = 0.1
-            self.range = 5
-
-        def update(self):
-            half_range = self.range/2
-            if self.y < -half_range or self.y > half_range:
-                self.invert_bounce()
-            self.y += self.dy
-            self.rotate(0, 0.0035, 0)
-
-        def handle_event(self, event):
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                self.invert_bounce()
-
-        def invert_bounce(self):
-            self.dy *= -1
-
     # Create a few cubes
     left_cube   = BouncingCube(2)
     middle_cube = BouncingCube(4)
