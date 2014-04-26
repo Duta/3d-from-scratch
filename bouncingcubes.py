@@ -13,6 +13,7 @@ if __name__ == '__main__':
             if self.y < -half_range or self.y > half_range:
                 self.invert_bounce()
             self.y += self.dy
+            self.rotate(0, 0.0035, 0)
 
         def handle_event(self, event):
             if event.type == pygame.MOUSEBUTTONDOWN:
