@@ -5,6 +5,8 @@ def main_loop(w, h, title, obj3Ds, fps=60):
     size = w, h
     # The timer (manages framerate)
     clock = pygame.time.Clock()
+    # Time delta between frames
+    dt = 0
     # Get a handle on the window
     screen = pygame.display.set_mode(size)
     # Set the window's title
@@ -43,7 +45,7 @@ def main_loop(w, h, title, obj3Ds, fps=60):
 
         # Update
         for obj3D in obj3Ds:
-            obj3D.update()
+            obj3D.update(dt)
 
         # Redraw
         render(obj3Ds)
@@ -52,4 +54,4 @@ def main_loop(w, h, title, obj3Ds, fps=60):
         pygame.display.flip()
 
         # Run at the given framerate
-        clock.tick(fps)
+        dt = clock.tick(fps)/1000.0

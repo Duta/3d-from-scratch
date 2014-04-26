@@ -39,7 +39,7 @@ class Obj3D(object):
         self.y = y
         self.z = z
 
-    def update(self):
+    def update(self, dt):
         pass
 
     def handle_event(self, event):

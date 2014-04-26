@@ -1,18 +1,18 @@
-import basic3d.basicrunner, pygame
+import basic3d.basicrunner, pygame, math
 from basic3d.shapes import *
 
 class BouncingCube(Cube):
     def __init__(self, size):
         super(BouncingCube, self).__init__(size)
-        self.dy = 0.1
+        self.dy = 1
         self.range = 5
 
-    def update(self):
+    def update(self, dt):
         half_range = self.range/2
         if self.y < -half_range or self.y > half_range:
             self.invert_bounce()
-        self.y += self.dy
-        self.rotate(0, 0.0035, 0)
+        self.y += dt * self.dy
+        self.rotate(0, dt * math.pi/2, 0)
 
     def handle_event(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
